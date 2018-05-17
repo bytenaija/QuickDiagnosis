@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage>{
               }
             ); */ 
            this.loadAsset();
-            searchRes = diseaseData;
+            
 
            
            
@@ -43,7 +43,7 @@ class HomePageState extends State<HomePage>{
 Future<String> loadAsset() async {
   
   var jsonString = await rootBundle.loadString('data/disease.json');
-  setState(()=> diseaseData = json.decode(jsonString));
+  setState((){ diseaseData = json.decode(jsonString); searchRes = diseaseData;});
   return "success";
    
 }
@@ -119,7 +119,9 @@ Future<String> loadAsset() async {
   }
 
  _getList(String search){
- 
+ this.setState((){
+                diseaseData = searchRes;
+                });
    if(search != ""){
                 print("search");
                 print(search);
@@ -135,8 +137,8 @@ Future<String> loadAsset() async {
         diseaseData = searchOutput;
       });
      
-              }else{
-                 setState((){
+    }else{
+          this.setState((){
                 diseaseData = searchRes;
                 });
               }

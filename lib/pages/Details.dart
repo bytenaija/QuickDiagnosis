@@ -13,7 +13,6 @@ class Disease extends StatelessWidget{
   String symptoms;
 
   Disease.fromJson(Map json){
-    print(json);
     this.id = json['id'];
     this.introduction = json['introduction'];
     this.causes = json['causes'];
@@ -31,28 +30,49 @@ class Disease extends StatelessWidget{
    return new Scaffold(
      
       appBar: new AppBar(
-        title: new Text(this.name),
+        title: new Text(this.name, style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0)),
       ),
 
        body:
            Padding(
-            padding: const EdgeInsets.only(top: 50.0, bottom: 10.0, left: 10.0, right:10.0),
-            child: new Column(
-                children: <Widget>[
+            padding: const EdgeInsets.only(top: 10.0, bottom: 30.0, left: 10.0, right:10.0),
+            child: 
                   new ListView(
                     children: <Widget>[
-                   new Column(
-                      children: <Widget> [
-                          new Text("Introduction"),
-                          new Text(this.introduction),
+                          new Text("Introduction", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.introduction, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Text("Causes", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.causes, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Text("Symptoms", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.symptoms, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Text("Prevention", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.prevention, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Text("Diagnosing", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.diagnosing, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Text("Treatment", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Divider(color:Colors.green),
+                          new Text(this.treatment, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Divider(color:Colors.green),
+                          new Column(
+                            children: <Widget>[
+                              new Text("Source: " + this.source, style: new TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0, color: Colors.red )),
+                            ],
+                          )
+
                       ]
                       ),
                  
-                    ],
-                  )
-                  
-                ],
-              ),
+                
             
            )
    );  
