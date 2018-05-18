@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class Disease extends StatelessWidget{
   //Constructor
@@ -41,41 +43,52 @@ class Disease extends StatelessWidget{
                     children: <Widget>[
                           new Text("Introduction", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
-                          new Text(this.introduction, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Text(this.introduction, textAlign: TextAlign.justify,  style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
-                          new Text("Causes", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
+                          new Text("Causes", textAlign: TextAlign.justify,  style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
                           new Text(this.causes, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
                           new Text("Symptoms", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
-                          new Text(this.symptoms, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Text(this.symptoms,  textAlign: TextAlign.justify,  style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
                           new Text("Prevention", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
-                          new Text(this.prevention, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Text(this.prevention, textAlign: TextAlign.justify,  style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
                           new Text("Diagnosing", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
-                          new Text(this.diagnosing, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Text(this.diagnosing, textAlign: TextAlign.justify, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
                           new Text("Treatment", style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0, color: Colors.greenAccent)),
                           new Divider(color:Colors.green),
-                          new Text(this.treatment, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
+                          new Text(this.treatment, textAlign: TextAlign.justify, style: new TextStyle(fontSize: 20.0, letterSpacing: 2.0)),
                           new Divider(color:Colors.green),
                           new Column(
                             children: <Widget>[
-                              new Text("Source: " + this.source, style: new TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0, color: Colors.red )),
-                            ],
-                          )
-
-                      ]
-                      ),
-                 
-                
-            
-           )
-   );  
-  }
+                              FlatButton(
+                                onPressed: ()=>_launchUrl(this.source),
+                                                                child: new Text("Source: " + this.source, textAlign: TextAlign.justify, style: new TextStyle(fontStyle: FontStyle.italic, fontSize: 15.0, color: Colors.red )),
+                                                              )
+                                                            ],
+                                                          )
+                                
+                                                      ]
+                                                      ),
+                                                 
+                                                
+                                            
+                                           )
+                                   );  
+                                  }
+                                
+    void _launchUrl(String source) async {
+          if (await canLaunch(source)) {
+          await launch(source);
+        } else {
+          print('Could not launch $source');
+        }
+     }
 
 }

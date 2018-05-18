@@ -52,7 +52,8 @@ Future<String> loadAsset() async {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Diseases'),
+        title: new Text('A - z List of Diseases'),
+        leading: Icon(Icons.local_hospital),
       ),
 
       body: Padding(
@@ -64,9 +65,12 @@ Future<String> loadAsset() async {
           
            new TextField(
                 decoration: new InputDecoration(
-                  hintText: "Search..."
+                  hintText: "Search Diseases...",
+                  labelText: "Search",
+                  icon: Icon(Icons.search)
                 ),
-                onChanged: (String str)=> _getList(str)
+                onChanged: (String str)=> _getList(str),
+
               ), 
       
 
